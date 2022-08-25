@@ -22,12 +22,12 @@ connection.connect(function (error) {
     }
 })
 
-// router.get('/',(req,res) =>{
-//     var query = "SELECT * FROM fake-store-express"
-//     connection.query(query, (error,rows) =>{
-//         if (error) throw error
-//         res.send(rows)
-//     })
-// })
+router.get('/',(req,res) =>{
+    var query = "SELECT * FROM customer"
+    connection.query(query, (error,rows) =>{
+        if (error) throw error
+        res.send(rows)
+    })
+})
 
 module.exports = router
