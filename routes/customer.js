@@ -11,15 +11,23 @@ connection.connect(function (error) {
         console.log(error);
     }else {
         console.log("Connected to the MySQL Server")
-        var userTableQuery = "CREATE TABLE IF NOT EXISTS fake-store-express (id VARCHAR(255) PRIMARY KEY , name VARCHAR (255),address VARCHAR (255), contact VARCHAR (255))"
+        var userTableQuery = "CREATE TABLE IF NOT EXISTS customer (id VARCHAR(255) PRIMARY KEY , name VARCHAR (255),address VARCHAR (255), contact VARCHAR (255))"
         connection.query(userTableQuery, function (error,result) {
             if (error) throw error;
             //console.log(result);
             if (result.warningCount === 0){
-                console.log("fake-store-express table Created");
+                console.log("customer table Created");
             }
         })
     }
 })
+
+// router.get('/',(req,res) =>{
+//     var query = "SELECT * FROM fake-store-express"
+//     connection.query(query, (error,rows) =>{
+//         if (error) throw error
+//         res.send(rows)
+//     })
+// })
 
 module.exports = router

@@ -3,6 +3,6 @@ module.exports = {
         host: 'localhost',
         user: 'root',
         password: 'Milasha99@',
-        database: 'fake-store-express'
+        database: 'fake_store_express'
     }
 }
