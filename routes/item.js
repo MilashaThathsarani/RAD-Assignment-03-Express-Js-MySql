@@ -21,4 +21,22 @@ connection.connect(function (error) {
     }
 })
 
+router.post('/', (req,res) =>{
+    console.log(req.body)
+    const code = req.body.code;
+    const itemName = req.body.itemName;
+    const qty = req.body.qty;
+    const price = req.body.price;
+
+    var query = "INSERT INTO item (code, itemName, qty,price) VALUES (?,?,?,?)"
+    connection.query(query, [code,itemName,qty,price],(error) =>{
+        if (error){
+            res.send({'message' :'Duplicate Entry'})
+        }else {
+            res.send({'message' : 'User created'})
+        }
+    });
+})
+
+
 module.exports = router
