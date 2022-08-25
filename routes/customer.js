@@ -22,6 +22,23 @@ connection.connect(function (error) {
     }
 })
 
+router.post('/', (req,res) =>{
+    console.log(req.body)
+    const id = req.body.id;
+    const name = req.body.name;
+    const address = req.body.address;
+    const contact = req.body.contact;
+
+    var query = "INSERT INTO customer (id, name, address,contact) VALUES (?,?,?,?)"
+    connection.query(query, [id,name,address,contact],(error) =>{
+        if (error){
+            res.send({'message' :'Duplicate Entry'})
+        }else {
+            res.send({'message' : 'User created'})
+        }
+    });
+})
+
 router.get('/',(req,res) =>{
     var query = "SELECT * FROM customer"
     connection.query(query, (error,rows) =>{
