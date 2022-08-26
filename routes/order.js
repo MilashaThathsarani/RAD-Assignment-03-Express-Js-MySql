@@ -70,9 +70,9 @@ router.delete('/:orderId', (req,res) =>{
         if (error) console.log(error);
 
         if (rows.affectedRows > 0){
-            res.send({'message': 'user deleted'})
+            res.send({'message': 'Order deleted'})
         }else {
-            res.send({'message': 'user not found'})
+            res.send({'message': 'Order not found'})
         }
     })
 })
@@ -82,7 +82,7 @@ router.get('/:orderId', (req,res) =>{
 
     var query = "SELECT * FROM orders WHERE orderId=?"
 
-    connection.query(query, [orderId], (error, rows) => {
+    connection.query(query, [orderId], (error, rows) =>{
         if (error) console.log(error);
 
         res.send(rows)
