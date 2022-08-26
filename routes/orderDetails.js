@@ -56,9 +56,9 @@ router.put('/', (req,res) =>{
     connection.query(query, [qty,price,itemCode,ordersId],(error,rows) =>{
         if (error) throw error
         if (rows.affectedRows > 0){
-            res.send({'message':'Order Updated'})
+            res.send({'message':'Order Details Updated'})
         }else {
-            res.send({'message':'Order not Found'})
+            res.send({'message':'Order Details not Found'})
         }
     });
 })
@@ -72,9 +72,9 @@ router.delete('/:ordersId', (req,res) =>{
         if (error) console.log(error);
 
         if (rows.affectedRows > 0){
-            res.send({'message': 'Order deleted'})
+            res.send({'message': 'Order Details deleted'})
         }else {
-            res.send({'message': 'Order not found'})
+            res.send({'message': 'Order Details not found'})
         }
     })
 })
