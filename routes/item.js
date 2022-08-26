@@ -33,7 +33,7 @@ router.post('/', (req,res) =>{
         if (error){
             res.send({'message' :'Duplicate Entry'})
         }else {
-            res.send({'message' : 'Item created'})
+            res.send({'message' : 'Item Created'})
         }
     });
 })
@@ -58,7 +58,7 @@ router.put('/', (req,res) =>{
         if (rows.affectedRows > 0){
             res.send({'message':'Item Updated'})
         }else {
-            res.send({'message':'Item not found'})
+            res.send({'message':'Item not Found'})
         }
     });
 })
@@ -72,9 +72,9 @@ router.delete('/:code', (req,res) =>{
         if (error) console.log(error);
 
         if (rows.affectedRows > 0){
-            res.send({'message': 'Item deleted'})
+            res.send({'message': 'Item Deleted'})
         }else {
-            res.send({'message': 'Item not found'})
+            res.send({'message': 'Item not Found'})
         }
     })
 })
