@@ -78,4 +78,17 @@ router.delete('/:code', (req,res) =>{
         }
     })
 })
+
+router.get('/:code', (req,res) =>{
+    const code = req.params.code
+
+    var query = "SELECT * FROM item WHERE code=?"
+
+    connection.query(query, [code], (error, rows) => {
+        if (error) console.log(error);
+
+        res.send(rows)
+    })
+})
+
 module.exports = router
