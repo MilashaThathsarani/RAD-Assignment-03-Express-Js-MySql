@@ -38,4 +38,12 @@ router.post('/', (req,res) =>{
     });
 })
 
+router.get('/',(req,res) =>{
+    var query = "SELECT * FROM orderDetails"
+    connection.query(query, (error,rows) =>{
+        if (error) throw error
+        res.send(rows)
+    })
+})
+
 module.exports = router
