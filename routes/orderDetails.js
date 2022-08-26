@@ -21,21 +21,21 @@ connection.connect(function (error) {
     }
 })
 
-// router.post('/', (req,res) =>{
-//     console.log(req.body)
-//     const ordersId = req.body.ordersId;
-//     const qty = req.body.qty;
-//     const price = req.body.price;
-//     const itemCode = req.body.itemCode;
-//
-//     var query = "INSERT INTO orderDetails (ordersId,qty,price,itemCode) VALUES (?,?,?,?)"
-//     connection.query(query, [ordersId,qty,price,itemCode],(error) =>{
-//         if (error){
-//             res.send({'message' :'Duplicate Entry'})
-//         }else {
-//             res.send({'message' : 'Order Details Created'})
-//         }
-//     });
-// })
+router.post('/', (req,res) =>{
+    console.log(req.body)
+    const ordersId = req.body.ordersId;
+    const qty = req.body.qty;
+    const price = req.body.price;
+    const itemCode = req.body.itemCode;
+
+    var query = "INSERT INTO orderDetails (ordersId,qty,price,itemCode) VALUES (?,?,?,?)"
+    connection.query(query, [ordersId,qty,price,itemCode],(error) =>{
+        if (error){
+            res.send({'message' :'Duplicate Entry'})
+        }else {
+            res.send({'message' : 'Order Details Created'})
+        }
+    });
+})
 
 module.exports = router
