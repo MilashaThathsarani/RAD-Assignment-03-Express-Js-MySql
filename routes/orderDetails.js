@@ -63,4 +63,32 @@ router.put('/', (req,res) =>{
     });
 })
 
+router.delete('/:ordersId', (req,res) =>{
+    const ordersId = req.params.ordersId
+
+    var query = "DELETE FROM orderDetails WHERE ordersId=?";
+
+    connection.query(query, [ordersId], (error, rows) => {
+        if (error) console.log(error);
+
+        if (rows.affectedRows > 0){
+            res.send({'message': 'Order deleted'})
+        }else {
+            res.send({'message': 'Order not found'})
+        }
+    })
+})
+
+router.get('/:ordersId', (req,res) =>{
+    const ordersId = req.params.ordersId
+
+    var query = "SELECT * FROM orderDetails WHERE ordersId=?"
+
+    connection.query(query, [ordersId], (error, rows) =>{
+        if (error) console.log(error);
+
+        res.send(rows)
+    })
+})
+
 module.exports = router
