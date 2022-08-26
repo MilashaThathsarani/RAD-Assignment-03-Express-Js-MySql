@@ -63,5 +63,19 @@ router.put('/', (req,res) =>{
     });
 })
 
+router.delete('/:code', (req,res) =>{
+    const code = req.params.code
 
+    var query = "DELETE FROM item WHERE code=?";
+
+    connection.query(query, [code], (error, rows) => {
+        if (error) console.log(error);
+
+        if (rows.affectedRows > 0){
+            res.send({'message': 'Item deleted'})
+        }else {
+            res.send({'message': 'Item not found'})
+        }
+    })
+})
 module.exports = router
