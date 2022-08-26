@@ -33,7 +33,7 @@ router.post('/', (req,res) =>{
         if (error){
             res.send({'message' :'Duplicate Entry'})
         }else {
-            res.send({'message' : 'User created'})
+            res.send({'message' : 'Item created'})
         }
     });
 })
@@ -44,6 +44,23 @@ router.get('/',(req,res) =>{
         if (error) throw error
         res.send(rows)
     })
+})
+
+router.put('/', (req,res) =>{
+    const code = req.body.code;
+    const itemName = req.body.itemName;
+    const qty = req.body.qty;
+    const price = req.body.price;
+
+    var query = "UPDATE item SET itemName=?, qty=?,price=? WHERE code=?"
+    connection.query(query, [itemName,qty,price,code],(error,rows) =>{
+        if (error) throw error
+        if (rows.affectedRows > 0){
+            res.send({'message':'Item Updated'})
+        }else {
+            res.send({'message':'Item not found'})
+        }
+    });
 })
 
 
