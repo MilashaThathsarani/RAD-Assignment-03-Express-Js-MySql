@@ -20,4 +20,20 @@ connection.connect(function (error) {
         })
     }
 })
+
+router.post('/', (req,res) =>{
+    console.log(req.body)
+    const orderId = req.body.orderId;
+    const date = req.body.date;
+    const customerId = req.body.customerId;
+
+    var query = "INSERT INTO orders (orderId,date,customerId) VALUES (?,?,?)"
+    connection.query(query, [orderId,date,customerId],(error) =>{
+        if (error){
+            res.send({'message' :'Duplicate Entry'})
+        }else {
+            res.send({'message' : 'Order Created'})
+        }
+    });
+})
 module.exports = router
