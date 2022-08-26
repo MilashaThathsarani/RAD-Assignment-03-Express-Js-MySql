@@ -1,7 +1,7 @@
 const express = require('express');
 const customer = require('./routes/customer.js')
 const item = require('./routes/item')
-// const user = require('./routes/user')
+const order = require('./routes/order')
 
 const app = express();
 const port = 4000;
@@ -9,7 +9,7 @@ const port = 4000;
 app.use(express.json());
 app.use('/customer',customer)
 app.use('/item',item)
-// app.use('/user',user)
+app.use('/order',order)
 
 
 app.listen(port,(req,res) => {
